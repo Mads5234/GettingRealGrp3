@@ -1,5 +1,0 @@
-﻿Vælg noget eller 0 for at afslutte
-1. Menupunkt nr.1;1
-2. Menupunkt nr.2;2
-3. Menupunkt nr.3;3
-4. Menupunkt nr.4;4
