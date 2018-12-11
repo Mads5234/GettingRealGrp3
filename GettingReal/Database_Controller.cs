@@ -122,7 +122,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd2 = new SqlCommand("GetOwnerByEmail", conn);
+                    SqlCommand cmd2 = new SqlCommand("Find telefonnummer: ", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
                     cmd2.Parameters.Add(new SqlParameter("@Telefonnummer: ", Telefonnummer));
 
