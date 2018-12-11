@@ -27,7 +27,7 @@ namespace GettingReal
                     {
                     case "one":
                         Console.Clear();
-                        Console.WriteLine("Hello");
+                        Controller.DateMenu();
                         break;
                     case "two":
                         Console.Clear();
@@ -41,7 +41,7 @@ namespace GettingReal
             }
         }
 
-        private static string drawMenu(List<string> items)
+        public static string drawMenu(List<string> items)
         {
             for (int i = 0; i < items.Count; i++)
             {
