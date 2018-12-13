@@ -16,25 +16,29 @@ namespace GettingReal
                 "Fremvisning",
                 "Tilbage"
             };
-            string selectedMenuItem = Menu.drawMenu(DateItems);
-            switch (selectedMenuItem)
+            while (true)
             {
-                
-                case "Solgt":
-                    Console.Clear();
-                    Database_Controller.InsertCustomer();
-                    break;
-                case "Købt":
-                    Console.Clear();
-                    Database_Controller.InsertCustomer();
-                    break;
-                case "Fremvisning":
-                    Console.Clear();
-                    Database_Controller.InsertShowing();
-                    break;
-                case "Tilbage":
-                    Menu.DanMenu();
-                    break;
+                string selectedMenuItem = Menu.drawMenu(DateItems);
+                switch (selectedMenuItem)
+                {
+
+                    case "Solgt":
+                        Console.Clear();
+                        Database_Controller.InsertCustomer();
+                        break;
+                    case "Købt":
+                        Console.Clear();
+                        Database_Controller.InsertCustomer();
+                        break;
+                    case "Fremvisning":
+                        Console.Clear();
+                        Database_Controller.InsertShowing();
+                        break;
+                    case "Tilbage":
+                        Console.Clear();
+                        Menu.DanMenu();
+                        break;
+                }
             }
         }
         public static void FindMenu()
@@ -44,28 +48,31 @@ namespace GettingReal
                 "Find via Telefonnummer",
                 "Tilbage"
             };
-            string selectedMenuItem = Menu.drawMenu(DateItems);
-            switch (selectedMenuItem)
-            {
-                case "Find via Adresse og PorstNr":
-                    Console.Clear();
-                    Console.WriteLine("Skriv adresse");
-                    string add = Console.ReadLine();
-                    Console.WriteLine("Skriv Postnummer");
-                    string pst = Console.ReadLine();
-                    Database_Controller.FindOwnerByAddress(add, pst);
-                    break;
-                case "Find via Telefonnummer":
-                    Console.Clear();
-                    Console.WriteLine("Skriv telefonnummer");
-                    string tlf = Console.ReadLine();
-                    Database_Controller.FindOwnerByPhone(tlf);
-                    break;
-                case "Tilbage":
-                    Menu.DanMenu();
-                    break;
+                while (true)
+                {
+                string selectedMenuItem = Menu.drawMenu(DateItems);
+                switch (selectedMenuItem)
+                {
+                    case "Find via Adresse og PorstNr":
+                        Console.Clear();
+                        Console.WriteLine("Skriv adresse");
+                        string add = Console.ReadLine();
+                        Console.WriteLine("Skriv Postnummer");
+                        string pst = Console.ReadLine();
+                        Database_Controller.FindOwnerByAddress(add, pst);
+                        break;
+                    case "Find via Telefonnummer":
+                        Console.Clear();
+                        Console.WriteLine("Skriv telefonnummer");
+                        string tlf = Console.ReadLine();
+                        Database_Controller.FindOwnerByPhone(tlf);
+                        break;
+                    case "Tilbage":
+                        Console.Clear();
+                        Menu.DanMenu();
+                        break;
+                }
             }
-
         }
     }
 }

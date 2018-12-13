@@ -21,7 +21,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd1 = new SqlCommand("Tilføj kunde", conn);
+                    SqlCommand cmd1 = new SqlCommand("InsertGrKundeInfo:", conn);
                     cmd1.CommandType = CommandType.StoredProcedure;
 
                     Console.WriteLine("Indtast adresse:");
@@ -54,7 +54,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd1 = new SqlCommand("Tilføj kunde", conn);
+                    SqlCommand cmd1 = new SqlCommand("InsertGrKundeInfo", conn);
                     cmd1.CommandType = CommandType.StoredProcedure;
 
                     Console.WriteLine("Indtast adresse:");
@@ -86,7 +86,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd2 = new SqlCommand("Alle kunder:", conn);
+                    SqlCommand cmd2 = new SqlCommand("GetGrKunder", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
 
                     SqlDataReader read = cmd2.ExecuteReader();
@@ -120,7 +120,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd2 = new SqlCommand("Find hus: ", conn);
+                    SqlCommand cmd2 = new SqlCommand("GetGrKunder", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
                     cmd2.Parameters.Add(new SqlParameter("@Adresse: ", Adresse));
                     cmd2.Parameters.Add(new SqlParameter("@Postnr: ", Pnr));
@@ -154,7 +154,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd2 = new SqlCommand("Find telefonnummer: ", conn);
+                    SqlCommand cmd2 = new SqlCommand("GetGrKunder", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
                     cmd2.Parameters.Add(new SqlParameter("@Telefonnummer: ", Telefonnummer));
 
