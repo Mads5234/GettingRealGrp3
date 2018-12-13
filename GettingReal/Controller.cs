@@ -16,18 +16,20 @@ namespace GettingReal
                 "fremvisning",
                 "Tilbage"
             };
+            int ged = 4;
             string selectedMenuItem = Menu.drawMenu(DateItems);
             switch (selectedMenuItem)
             {
+                
                 case "Solgt":
                     Console.Clear();
-                    Console.WriteLine(DateCalc.FindDates(DateCalc.ConcactTime.Sold));
+                    Console.WriteLine(DateCalc.FindDate(ged));
                     break;
                 case "Købt":
-                    DateCalc.FindDates(DateCalc.ConcactTime.Bought);
+                    DateCalc.FindDate(ged);
                     break;
                 case "Fremvisning":
-                    DateCalc.FindDates(DateCalc.ConcactTime.Showing);
+                    DateCalc.FindDate(ged);
                     break;
                 case "Tilbage":
                     Menu.DanMenu();

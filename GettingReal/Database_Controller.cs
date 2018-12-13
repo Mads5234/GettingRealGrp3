@@ -12,7 +12,7 @@ namespace GettingReal
     {
         private static string conntectionString =
         "Server = ealSQL1.eal.local; Database = A_DB27_2018; User Id = A_STUDENT27; Password = A_OPENDB27;";
-
+        public int thedate;
         public void InsertCustomer()
         {
             using (SqlConnection conn = new SqlConnection())
@@ -28,14 +28,46 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
                     Console.WriteLine("Indtast postnummer:");
                     cmd1.Parameters.Add(new SqlParameter("@Postnr", Console.ReadLine()));
-                    Console.WriteLine("Indtast dato for oprettelse:");
-                    cmd1.Parameters.Add(new SqlParameter("@Dato", Console.ReadLine()));
+                    cmd1.Parameters.Add(new SqlParameter("@Dato", DateTime.Today));
                     Console.WriteLine("Indtast kundenavn:");
                     cmd1.Parameters.Add(new SqlParameter("@Kunde", Console.ReadLine()));
                     Console.WriteLine("Indtast telefonnummer:");
                     cmd1.Parameters.Add(new SqlParameter("@Telefonnummer", Console.ReadLine()));
-                    Console.WriteLine("Indtast kontaktdato:");
-                    cmd1.Parameters.Add(new SqlParameter("@Kontaktdato", Console.ReadLine()));
+                    Console.WriteLine("Indtast kontaktdato fra 1-12 måneder:");
+                    string dato = Console.ReadLine();
+                    cmd1.Parameters.Add(new SqlParameter("@Kontaktdato", DateCalc.FindDate(thedate = Convert.ToInt32(dato))));
+
+                    cmd1.ExecuteNonQuery();
+                }
+
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Fejl: " + e.Message);
+                }
+            }
+        }
+        public void InsertShowing()
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                try
+                {
+                    conn.Open();
+
+                    SqlCommand cmd1 = new SqlCommand("Tilføj kunde", conn);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+
+                    Console.WriteLine("Indtast adresse:");
+                    cmd1.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
+                    Console.WriteLine("Indtast postnummer:");
+                    cmd1.Parameters.Add(new SqlParameter("@Postnr", Console.ReadLine()));
+                    cmd1.Parameters.Add(new SqlParameter("@Dato", DateTime.Today));
+                    Console.WriteLine("Indtast kundenavn:");
+                    cmd1.Parameters.Add(new SqlParameter("@Kunde", Console.ReadLine()));
+                    Console.WriteLine("Indtast telefonnummer:");
+                    cmd1.Parameters.Add(new SqlParameter("@Telefonnummer", Console.ReadLine()));
+                    int days = 2;
+                    cmd1.Parameters.Add(new SqlParameter("@Kontaktdato", DateCalc.DateDay(days)));
 
                     cmd1.ExecuteNonQuery();
                 }

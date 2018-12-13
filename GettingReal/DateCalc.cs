@@ -8,19 +8,18 @@ namespace GettingReal
 {
     public class DateCalc
     {
-
-        public enum ConcactTime
-        {
-            Sold = 30,
-            Bought = 30,
-            Showing = 2,
-        }
-
-        public static DateTime FindDates(ConcactTime period)
+        public static DateTime FindDate( int months)
         {
             DateTime currentDate;
             currentDate = DateTime.Today;
-            DateTime NextDate = currentDate.AddDays((int)period - 1);
+            DateTime NextDate = currentDate.AddMonths(months);
+            return NextDate;
+        }
+        public static DateTime DateDay(int days)
+        {
+            DateTime currentDate;
+            currentDate = DateTime.Today;
+            DateTime NextDate = currentDate.AddDays(days);
             return NextDate;
         }
 
