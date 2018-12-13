@@ -21,7 +21,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd1 = new SqlCommand("InsertGrKundeInfo:", conn);
+                    SqlCommand cmd1 = new SqlCommand("InsertGrKundeInfo", conn);
                     cmd1.CommandType = CommandType.StoredProcedure;
 
                     Console.WriteLine("Indtast adresse:");
