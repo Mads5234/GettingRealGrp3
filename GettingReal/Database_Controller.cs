@@ -12,10 +12,10 @@ namespace GettingReal
     {
         private static string conntectionString =
         "Server = ealSQL1.eal.local; Database = A_DB27_2018; User Id = A_STUDENT27; Password = A_OPENDB27;";
-        public int thedate;
-        public void InsertCustomer()
+        public static int thedate;
+        public static void InsertCustomer()
         {
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(conntectionString))
             {
                 try
                 {
@@ -33,7 +33,7 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@Kunde", Console.ReadLine()));
                     Console.WriteLine("Indtast telefonnummer:");
                     cmd1.Parameters.Add(new SqlParameter("@Telefonnummer", Console.ReadLine()));
-                    Console.WriteLine("Indtast kontaktdato fra 1-12 måneder:");
+                    Console.WriteLine("Indtast overtagelsesdato fra 1-12 måneder:");
                     string dato = Console.ReadLine();
                     cmd1.Parameters.Add(new SqlParameter("@Kontaktdato", DateCalc.FindDate(thedate = Convert.ToInt32(dato))));
 
@@ -46,9 +46,9 @@ namespace GettingReal
                 }
             }
         }
-        public void InsertShowing()
+        public static void InsertShowing()
         {
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(conntectionString))
             {
                 try
                 {
@@ -78,7 +78,7 @@ namespace GettingReal
                 }
             }
         }
-        public void ShowCustomer()
+        public static void ShowCustomer()
         {
             using (SqlConnection conn = new SqlConnection(conntectionString))
             {
@@ -86,7 +86,7 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd2 = new SqlCommand("Find kunde:", conn);
+                    SqlCommand cmd2 = new SqlCommand("Alle kunder:", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
 
                     SqlDataReader read = cmd2.ExecuteReader();
@@ -112,7 +112,7 @@ namespace GettingReal
                 }
             }
         }
-        public void FindOwnerByAddress(string Adresse)
+        public static void FindOwnerByAddress(string Adresse, string Pnr)
         {
             using (SqlConnection conn = new SqlConnection(conntectionString))
             {
@@ -120,10 +120,10 @@ namespace GettingReal
                 {
                     conn.Open();
 
-                    SqlCommand cmd2 = new SqlCommand("Find adresse: ", conn);
+                    SqlCommand cmd2 = new SqlCommand("Find hus: ", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
                     cmd2.Parameters.Add(new SqlParameter("@Adresse: ", Adresse));
-
+                    cmd2.Parameters.Add(new SqlParameter("@Postnr: ", Pnr));
                     SqlDataReader read = cmd2.ExecuteReader();
 
                     if (read.HasRows)
@@ -146,7 +146,7 @@ namespace GettingReal
                 }
             }
         }
-        public void FindOwnerByPhone(string Telefonnummer)
+        public static void FindOwnerByPhone(string Telefonnummer)
         {
             using (SqlConnection conn = new SqlConnection(conntectionString))
             {

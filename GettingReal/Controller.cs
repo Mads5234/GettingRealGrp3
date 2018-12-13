@@ -8,33 +8,64 @@ namespace GettingReal
 {
     class Controller
     {
-        public static void DateMenu()
+        public static void CustomerMenu()
         {
             List<string> DateItems = new List<string>() {
                 "Solgt",
                 "Købt",
-                "fremvisning",
+                "Fremvisning",
                 "Tilbage"
             };
-            int ged = 4;
             string selectedMenuItem = Menu.drawMenu(DateItems);
             switch (selectedMenuItem)
             {
                 
                 case "Solgt":
                     Console.Clear();
-                    Console.WriteLine(DateCalc.FindDate(ged));
+                    Database_Controller.InsertCustomer();
                     break;
                 case "Købt":
-                    DateCalc.FindDate(ged);
+                    Console.Clear();
+                    Database_Controller.InsertCustomer();
                     break;
                 case "Fremvisning":
-                    DateCalc.FindDate(ged);
+                    Console.Clear();
+                    Database_Controller.InsertShowing();
                     break;
                 case "Tilbage":
                     Menu.DanMenu();
                     break;
             }
+        }
+        public static void FindMenu()
+        {
+            List<string> DateItems = new List<string>() {
+                "Find via Adresse og PorstNr",
+                "Find via Telefonnummer",
+                "Tilbage"
+            };
+            string selectedMenuItem = Menu.drawMenu(DateItems);
+            switch (selectedMenuItem)
+            {
+                case "Find via Adresse og PorstNr":
+                    Console.Clear();
+                    Console.WriteLine("Skriv adresse");
+                    string add = Console.ReadLine();
+                    Console.WriteLine("Skriv Postnummer");
+                    string pst = Console.ReadLine();
+                    Database_Controller.FindOwnerByAddress(add, pst);
+                    break;
+                case "Find via Telefonnummer":
+                    Console.Clear();
+                    Console.WriteLine("Skriv telefonnummer");
+                    string tlf = Console.ReadLine();
+                    Database_Controller.FindOwnerByPhone(tlf);
+                    break;
+                case "Tilbage":
+                    Menu.DanMenu();
+                    break;
+            }
+
         }
     }
 }

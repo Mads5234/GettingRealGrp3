@@ -13,10 +13,10 @@ namespace GettingReal
         public static void DanMenu()
         {
             List<string> menuItems = new List<string>() {
-                "one",
-                "two",
-                "danbolig",
-                "Exit"
+                "Opret kunde",
+                "Find hus og kunde",
+                "Vis alle huse",
+                "Afslut"
             };
 
             Console.CursorVisible = false;
@@ -25,16 +25,18 @@ namespace GettingReal
                 string selectedMenuItem = drawMenu(menuItems);
                 switch(selectedMenuItem)
                     {
-                    case "one":
+                    case "Opret kunde":
                         Console.Clear();
-                        Controller.DateMenu();
+                        Controller.CustomerMenu();
                         break;
-                    case "two":
+                    case "Find hus og kunde":
                         Console.Clear();
-                        Console.WriteLine("diller");
+                        Controller.FindMenu();
                         break;
-                    
-                    case "Exit":
+                    case "Vis alle huse":
+                        Database_Controller.ShowCustomer();
+                        break;
+                    case "Afslut":
                         Environment.Exit(0);
                         break;
                     }
