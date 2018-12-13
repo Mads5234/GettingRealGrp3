@@ -33,9 +33,6 @@ namespace GettingReal
                         Console.Clear();
                         Controller.FindMenu();
                         break;
-                    case "Vis alle huse":
-                        Database_Controller.ShowCustomer();
-                        break;
                     case "Afslut":
                         Environment.Exit(0);
                         break;

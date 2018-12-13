@@ -78,40 +78,7 @@ namespace GettingReal
                 }
             }
         }
-        public static void ShowCustomer()
-        {
-            using (SqlConnection conn = new SqlConnection(conntectionString))
-            {
-                try
-                {
-                    conn.Open();
-
-                    SqlCommand cmd2 = new SqlCommand("GetGrKunder", conn);
-                    cmd2.CommandType = CommandType.StoredProcedure;
-
-                    SqlDataReader read = cmd2.ExecuteReader();
-
-                    if (read.HasRows)
-                    {
-                        while (read.Read())
-                        {
-                            string Adresse = read["Adresse: "].ToString();
-                            string Postnr = read["Postnummer: "].ToString();
-                            string Dato = read["Dato: "].ToString();
-                            string Kunde = read["Kunde: "].ToString();
-                            string Telefonnummer = read["Telefonnummer: "].ToString();
-                            string KontaktDato= read["Kontaktdato: "].ToString();
-                            Console.WriteLine(Adresse + " " + Postnr + " " + Dato + " " + Kunde + " " +Telefonnummer + " " + KontaktDato);
-                        }
-                    }
-                }
-
-                catch (SqlException e)
-                {
-                    Console.WriteLine("Fejl: " + e.Message);
-                }
-            }
-        }
+        
         public static void FindOwnerByAddress(string Adresse, string Pnr)
         {
             using (SqlConnection conn = new SqlConnection(conntectionString))
@@ -122,19 +89,21 @@ namespace GettingReal
 
                     SqlCommand cmd2 = new SqlCommand("GetGrKunder", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
-                    cmd2.Parameters.Add(new SqlParameter("@Adresse: ", Adresse));
-                    cmd2.Parameters.Add(new SqlParameter("@Postnr: ", Pnr));
+                    cmd2.Parameters.Add(new SqlParameter("@Adresse", Adresse));
+                    cmd2.Parameters.Add(new SqlParameter("@Postnr", Pnr));
+                    cmd2.Parameters.Add(new SqlParameter("@Telefonnummer", 1));
+
                     SqlDataReader read = cmd2.ExecuteReader();
 
                     if (read.HasRows)
                     {
                         while (read.Read())
                         {
-                            string Postnr = read["Postnummer: "].ToString();
-                            string Dato = read["Dato: "].ToString();
-                            string Kunde = read["Kunde: "].ToString();
-                            string Telefonnummer = read["Telefonnummer: "].ToString();
-                            string KontaktDato = read["Kontaktdato: "].ToString();
+                            string Postnr = read["Postnr"].ToString();
+                            string Dato = read["Dato"].ToString();
+                            string Kunde = read["Kunde"].ToString();
+                            string Telefonnummer = read["Telefonnummer"].ToString();
+                            string KontaktDato = read["Kontaktdato"].ToString();
                             Console.WriteLine(Adresse + " " + Postnr + " " + Dato + " " + Kunde + " " + Telefonnummer + " " + KontaktDato);
                         }
                     }
@@ -156,7 +125,9 @@ namespace GettingReal
 
                     SqlCommand cmd2 = new SqlCommand("GetGrKunder", conn);
                     cmd2.CommandType = CommandType.StoredProcedure;
-                    cmd2.Parameters.Add(new SqlParameter("@Telefonnummer: ", Telefonnummer));
+                    cmd2.Parameters.Add(new SqlParameter("@Adresse", 1));
+                    cmd2.Parameters.Add(new SqlParameter("@Postnr", 1));
+                    cmd2.Parameters.Add(new SqlParameter("@Telefonnummer", Telefonnummer));
 
                     SqlDataReader read = cmd2.ExecuteReader();
 
@@ -164,11 +135,11 @@ namespace GettingReal
                     {
                         while (read.Read())
                         {
-                            string Adresse = read["Adresse: "].ToString();
-                            string Postnr = read["Postnummer: "].ToString();
-                            string Dato = read["Dato: "].ToString();
-                            string Kunde = read["Kunde: "].ToString();
-                            string KontaktDato = read["Kontaktdato: "].ToString();
+                            string Adresse = read["Adresse"].ToString();
+                            string Postnr = read["Postnr"].ToString();
+                            string Dato = read["Dato"].ToString();
+                            string Kunde = read["Kunde"].ToString();
+                            string KontaktDato = read["Kontaktdato"].ToString();
                             Console.WriteLine(Adresse + " " + Postnr + " " + Dato + " " + Kunde + " " + Telefonnummer + " " + KontaktDato);
                         }
                     }
