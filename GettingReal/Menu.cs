@@ -15,7 +15,6 @@ namespace GettingReal
             List<string> menuItems = new List<string>() {
                 "Opret kunde",
                 "Find hus og kunde",
-                "Vis alle huse",
                 "Afslut"
             };
 

@@ -25,6 +25,9 @@ namespace GettingReal
                     case "Solgt":
                         Console.Clear();
                         Database_Controller.InsertCustomer();
+                        Console.Clear();
+                        Console.WriteLine("Hus tilføjet");
+                        Console.WriteLine("");
                         break;
                     case "Købt":
                         Console.Clear();
