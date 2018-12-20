@@ -11,8 +11,7 @@ namespace GettingReal
         public static void CustomerMenu()
         {
             List<string> DateItems = new List<string>() {
-                "Solgt",
-                "Købt",
+                "Solgt eller Købt",
                 "Fremvisning",
                 "Tilbage"
             };
@@ -22,16 +21,12 @@ namespace GettingReal
                 switch (selectedMenuItem)
                 {
 
-                    case "Solgt":
+                    case "Solgt eller Købt":
                         Console.Clear();
                         Database_Controller.InsertCustomer();
                         Console.Clear();
                         Console.WriteLine("Hus tilføjet");
                         Console.WriteLine("");
-                        break;
-                    case "Købt":
-                        Console.Clear();
-                        Database_Controller.InsertCustomer();
                         break;
                     case "Fremvisning":
                         Console.Clear();
