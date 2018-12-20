@@ -35,6 +35,10 @@ namespace GettingReal
                     case "Afslut":
                         Environment.Exit(0);
                         break;
+                    default:
+                        Console.Clear();
+                        Menu.DanMenu();
+                        break;
                     }
             }
         }
@@ -63,7 +67,7 @@ namespace GettingReal
             {
                 if (index == items.Count - 1)
                 {
-                    //index = 0; //Remove the comment to return to the topmost item in the list
+                    index = 0; 
                 }
                 else { index++; }
             }
@@ -71,7 +75,7 @@ namespace GettingReal
             {
                 if (index <= 0)
                 {
-                    //index = menuItem.Count - 1; //Remove the comment to return to the item in the bottom of the list
+                    index = items.Count - 1;
                 }
                 else { index--; }
             }
