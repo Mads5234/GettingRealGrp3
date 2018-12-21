@@ -10,12 +10,12 @@ namespace GettingReal
 {
     public class Database_Controller
     {
-        private static string conntectionString =
+        private static string connectionString =
         "Server = ealSQL1.eal.local; Database = A_DB27_2018; User Id = A_STUDENT27; Password = A_OPENDB27;";
         public static int thedate;
         public static void InsertCustomer()
         {
-            using (SqlConnection conn = new SqlConnection(conntectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace GettingReal
         }
         public static void InsertShowing()
         {
-            using (SqlConnection conn = new SqlConnection(conntectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -81,7 +81,7 @@ namespace GettingReal
         
         public static void FindOwnerByAddress(string Adresse, string Pnr)
         {
-            using (SqlConnection conn = new SqlConnection(conntectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -117,7 +117,7 @@ namespace GettingReal
         }
         public static void FindOwnerByPhone(string Telefonnummer)
         {
-            using (SqlConnection conn = new SqlConnection(conntectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
